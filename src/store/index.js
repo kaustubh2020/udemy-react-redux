@@ -1,10 +1,10 @@
-import { legacy_createStore as createStore } from "redux";
-import { createSlice } from "@reduxjs/toolkit";
+/* import { legacy_createStore as createStore } from "redux"; */
+import { createSlice, configureStore } from "@reduxjs/toolkit";
 
 const initialState = { counter: 0, showCounter: true };
 
 //Redux Tollkit
-createSlice({
+const counterSlice = createSlice({
   name: "counter",
   initialState: initialState,
   reducers: {
@@ -23,8 +23,12 @@ createSlice({
   },
 });
 
+const store = configureStore({
+  reducer: counterSlice.reducer,
+});
+
 //Redux
-const counterReducer = (state = initialState, action) => {
+/* const counterReducer = (state = initialState, action) => {
   if (action.type === "increment") {
     return {
       counter: state.counter + 1,
@@ -54,8 +58,8 @@ const counterReducer = (state = initialState, action) => {
   }
 
   return state;
-};
+}; */
 
-const store = createStore(counterReducer);
+/* const store = createStore(counterReducer); */
 
 export default store;
